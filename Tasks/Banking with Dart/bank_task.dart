@@ -3,8 +3,9 @@ import 'dart:io';
 class Bankaccount {
   String accname; // account name
   String accnum; // account number
+
   double accbal =
-      0.00; // account balance may be in big value so use double variable
+      0.00; // starting account balance may be in big value so use double variable
   static double totalbalance =
       0.00; // static keyword before variable is used to not allow change
   double amount = 0.00; // amount entered by user
@@ -17,7 +18,8 @@ class Bankaccount {
     this.accbal,
   ); //3 named parameters (acccount name , account number , account balance)
 
-  void balance() {
+  void balance() //Balance Function
+  {
     print("\n");
     print("Your Current Balance is $accbal");
     print("Please Enter New Money");
@@ -34,7 +36,8 @@ class Bankaccount {
     }
   }
 
-  void deposit() {
+  void deposit() //Deposit Function
+  {
     print("\n");
     print("Enter Amount to be deposit");
     amount = double.parse(stdin.readLineSync().toString());
@@ -51,7 +54,8 @@ class Bankaccount {
     }
   }
 
-  void withdraw() {
+  void withdraw() //Withdraw Function
+  {
     print("\n");
     print("Enter AmounDt to withdraw");
     amount = double.parse(stdin.readLineSync().toString());
@@ -68,49 +72,40 @@ class Bankaccount {
     }
   }
 
-  void display() {
+  void display() //Display Function
+  {
     print("\n");
     print("Your Name is : $accname");
     print("Your Account Number is : $accnum");
     print("Your Current Balance is : $accbal");
-    print("Please Maintain Minimum Balance of 10,000/-");
+    print("Note - Please Maintain Minimum Balance of 10,000/-");
   }
 }
 
-// class Savingaccount extends Bankaccount
-// {
-//   savingacc()
-//   {
-
-//   }
-
-// }
-// class Checkingaccount extends Bankaccount
-// {
-//   checkingacc()
-//   {
-
-//   }
-
-// }
-
-void main() {
+void main() //Main Function
+{
   print("\n");
   print("Please Enter Bank Account Holder Name : ");
-  String accname = stdin.readLineSync().toString();
+  String accname = stdin.readLineSync().toString(); //Input Name
 
   print("\n");
   print("Please Enter Bank Account Number : ");
-  String accnum = stdin.readLineSync().toString();
+  String accnum = stdin.readLineSync().toString(); //Input Account Number
 
   print("\n");
   print("Please Enter Bank Account Balance : ");
-  double accbal = double.parse(stdin.readLineSync().toString());
+  double accbal = double.parse(
+    stdin.readLineSync().toString(),
+  ); //Input Starting Balance
 
-  var d1 = Bankaccount(accname, accnum, accbal);
+  var d1 = Bankaccount(
+    accname,
+    accnum,
+    accbal,
+  ); //3 Parameter Assigned to Bank Account Constructor
 
-  d1.balance();
-  d1.deposit();
-  d1.withdraw();
-  d1.display();
+  d1.balance(); //Calling Balance Method
+  //  d1.deposit(); //Calling Deposit Method
+  d1.withdraw(); //Calling Withdraw Method
+  d1.display(); //Calling Display Method
 }
